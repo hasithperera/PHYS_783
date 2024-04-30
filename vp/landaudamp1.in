@@ -1,0 +1,82 @@
+!==============================================================================
+!  SAMPLE INPUT FILE FOR VP(3) Multi-species, drifts, Krook collisions
+!  STABLE AND UNSTABLE ELECTROSTATIC SYSTEMS
+!  VP(3): Nonlinear Vlasov-Poisson Solver
+!  Input File: Landau Damping of Langmuir Wave
+!
+!  Gregory G. Howes, Kristopher G. Klein
+!  2019 MAR 27
+!==============================================================================
+!==============================================================================
+&params
+!==============================================================================
+! Resolution and Simulation Domain
+nx=64
+nv=128
+vmax=5.
+nl=2.
+
+!==============================================================================
+! Running Parameters
+nonlin=.true.
+coll=.false.
+vdepnu=.false.
+cfl=0.05
+nt=20000
+!Timestep is
+!f_cfl *2 *pi *nl/(nx * v_max)
+CN_smooth=F
+CN_N=15
+
+!==============================================================================
+! Initial Conditions
+ic=1
+! Density Initialization (ic=1)-----------------------------------------------
+nk1=1
+dn=0.1
+! Eigenfunction Initialization (ic=2)-----------------------------------------
+eig_opt=0
+om=1.06E0
+gam=-4.99E-5
+phi0=0.1
+
+!==============================================================================
+! Diagnostics
+ntout=50
+ntout_phase=2000 !cadence of phase-space output
+phase_out=.true.
+full_out=.false.
+nx_out=1
+moving_probes=.false.
+/
+
+!==============================================================================
+! Plasma Parameters
+!==============================================================================
+!First species is the reference species!
+
+&species_1
+tauS=1.0
+muS=1.0
+Qs=-1.0
+Ds=1.0
+Vs=0.0
+perturbS=T
+nuS=0.0
+/
+
+&species_2 
+tauS=1.0
+muS=100.0
+Qs=1.0
+Ds=1.0
+Vs=0.0
+perturbS=F
+nuS=0.0
+/
+
+!==============================================================================
+! Diagnostic Namelists
+&slice_1
+x_in=32
+/
