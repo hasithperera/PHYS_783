@@ -1,6 +1,14 @@
 .DS_Store
 
 # remove vp outputs
-./vp/out
+./vp/out/
 
+*.scratch
 
+# f90 compile files
+*.mod
+*.o
+
+# data
+
+*.mat
