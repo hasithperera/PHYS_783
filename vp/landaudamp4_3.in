@@ -21,7 +21,7 @@ nl=2.
 nonlin=.true.
 coll=.false.
 vdepnu=.false.
-cfl=0.125
+cfl=0.25
 nt=10000
 !Timestep is
 !f_cfl *2 *pi *nl/(nx * v_max)
@@ -30,7 +30,7 @@ CN_N=15
 
 !==============================================================================
 ! Initial Conditions
-ic=2
+ic=1
 ! Density Initialization (ic=1)-----------------------------------------------
 nk1=1
 dn=0.02
@@ -39,7 +39,7 @@ eig_opt=0
 om=1.43E0
 gam=-1.59E-1
 phi0=0.02
-nspec = 4
+nspec = 6
 
 !==============================================================================
 ! Diagnostics
@@ -90,11 +90,32 @@ nuS=0.0
 tauS=0.01
 muS=100.0
 Qs=1.0
-Ds=0.1
+Ds=.1
 Vs=3.5
 perturbS=F
 nuS=0.0
 /
+
+&species_5
+tauS=0.01
+muS=1.0
+Qs=-1.0
+Ds=.1
+Vs=-3.5
+perturbS=F
+nuS=0.0
+/
+
+&species_6
+tauS=0.01
+muS=100.0
+Qs=1.0
+Ds=.1
+Vs=-3.5
+perturbS=F
+nuS=0.0
+/
+
 
 
 !==============================================================================
